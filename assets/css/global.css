@@ -8,18 +8,10 @@
 }
 
 :root {
-  --medium-purple: #8A25A5;
-  --darker-purple: #260259;
   --medium-pink: #C43E76;
-  --ligth-cyan: #02c8ff;
-  --medium-cyan: #4CB0C9;
+  --darker-pink: #992f5b;
   --medium-black: #1A191B;
   --white: #FFFFFF
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 10vh;
 }
 
 /*  MENU */
@@ -30,16 +22,7 @@ html {
   align-items: center;
   padding: 0em 8em;
   background-color: var(--medium-black);
-  position: fixed;
-  width: 100%;
-  z-index: 1;
   transition: all 0.3s;
-}
-
-.header-container.active {
-    transition: all 0.3s;
-    background-color: var(--medium-black);
-    padding: 0.25rem 10rem;
 }
 
 .logo-container {
@@ -63,7 +46,6 @@ html {
 }
 
 .header-container a {
-  /* border: 1px solid red; */
   position: relative;
   text-decoration: none;
   font-size: 0.9em;
@@ -114,6 +96,11 @@ html {
   list-style: none;
 }
 
+.dropdown-title {
+  font-size: 1.3em;
+  color: var(--medium-pink)
+}
+
 .menu-dropdown li a {
   text-transform: capitalize;
   transition: color 0.3s
@@ -126,7 +113,6 @@ html {
 .hamburguer-menu {
   display: none;
   cursor: pointer;
-
 }
 
 .hamburguer-menu .bar {
@@ -145,12 +131,13 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2em;
   background-image: url('../img/home-background.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  padding: 0em 8em;
+  padding: 2em 4em;
 }
 
 .home-text {
@@ -184,6 +171,107 @@ html {
   color: var(--white);
   font-size: 0.9em;
 }
+
+/*  Home Content */
+
+.home-content {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  padding: 0.5em;
+}
+
+.content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 35%;
+  color: var(--white);
+  text-align: center;
+}
+
+.form-container {
+  background: rgba(0, 0, 0, .7);
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.form-container fieldset {
+  border: 2px solid var(--white);
+  padding: 1em;
+}
+
+.form-container fieldset legend {
+  font-weight: 300;
+  padding: 0.4em;
+  background: var(--medium-pink);
+  color: var(--white);
+}
+
+.form-container fieldset .form-fields {
+  position: relative;
+  margin-top: 4.5em;
+  font-weight: 300;
+}
+
+.form-container fieldset .form-fields .form-input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.9em;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--white);
+}
+
+.form-container fieldset .form-fields .form-label {
+  color: var(--white);
+  font-size: 0.9em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+.form-container fieldset .form-fields .validated-label {
+  position: absolute;
+  left: 0;
+  top: -15px;
+  font-size: 0.8em;
+  color: var(--medium-pink);
+}
+
+.form-container fieldset .form-fields .form-input:focus ~ .form-label,
+.form-container fieldset .form-fields .form-input:valid ~ .form-label {
+  top: -15px;
+  font-size: 0.8em;
+  color: var(--medium-pink);
+}
+
+.form-container fieldset p {
+  font-size: 0.8em;
+  margin-top: 1.2em;
+  text-align: center;
+}
+
+.form-container fieldset .form-button {
+  border: none;
+  padding: 0.5em;
+  background-color: var(--medium-pink);
+  color: var(--white);
+  font-size: 0.8em;
+  width: 100%;
+  margin-top: 3em;
+  cursor: pointer;
+  border-radius: 1em;
+  transition: background-color 0.3s;
+}
+
+.form-container fieldset .form-button:hover {
+  background-color: var(--darker-pink);
+}
+
 
 @media(max-width: 880px) {
   .header-container {
