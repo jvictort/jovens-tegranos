@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --medium-purple: #8A25A5;
+  --darker-purple: #260259;
+  --medium-pink: #C43E76;
+  --ligth-cyan: #02c8ff;
+  --medium-cyan: #4CB0C9;
+  --medium-black: #1A191B;
+  --white: #FFFFFF
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 10vh;
+}
+
+/*  MENU */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0em 8em;
+  background-color: var(--medium-black);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.header-container.active {
+    transition: all 0.3s;
+    background-color: var(--medium-black);
+    padding: 0.25rem 10rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 3.5em;
+}
+
+.menu-container {
+  display: flex;
+  gap: 3.5em;
+  list-style: none;
+}
+
+.menu-container li {
+  position: relative
+}
+
+.header-container a {
+  /* border: 1px solid red; */
+  position: relative;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 300;
+  padding: 0.5em;
+  color: var(--white);
+}
+
+.menu-container li a {
+  text-transform: uppercase;
+}
+
+.header-container a.border-effect::after {
+  content: "";
+  position: absolute;
+  background-color: var(--white);
+  height: 1px;
+  width: 0%;
+  left: 0;
+  bottom: -3px;
+  transition: all 0.3s;
+}
+
+.header-container a.border-effect:hover::after {
+  width: 100%;
+}
+
+.menu-container li nav {
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+  width: 100%;
+  position: fixed;
+  top: 3.5em;
+  left: 0;
+  padding: 0.5em 10em;
+  background-color: var(--medium-black);
+}
+
+.menu-container li:hover nav,
+.menu-container li.over nav {
+  visibility: visible;
+}
+
+.menu-dropdown {
+  border-left: 3px solid var(--white);
+  padding: 0.5em;
+  list-style: none;
+}
+
+.menu-dropdown li a {
+  text-transform: capitalize;
+  transition: color 0.3s
+}
+
+.menu-dropdown li a:hover {
+  color: var(--medium-pink);
+}
+
+.hamburguer-menu {
+  display: none;
+  cursor: pointer;
+
+}
+
+.hamburguer-menu .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--white);
+}
+
+/* MAIN */
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../img/home-background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 0em 8em;
+}
+
+.home-text {
+  border-left: 3px solid var(--white);
+  padding: 0.5em;
+  color: var(--white);
+}
+
+.home-text h1 {
+  font-size: 2.8em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.home-section span {
+  color: var(--medium-pink);
+}
+
+.home-text h2 {
+  font-size: 2em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: -0.5em;
+}
+
+.home-img img {
+  width: 15em;
+}
+
+.home-footer p {
+  color: var(--white);
+  font-size: 0.9em;
+}
+
+@media(max-width: 880px) {
+  .header-container {
+    padding: 0em 1em;
+  }
+
+  .header-container.active {
+    padding: 0em 1.5em;
+  }
+
+  .header-container .menu-container {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    flex-direction: column;
+    background-color: var(--medium-black);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .header-container .menu-container li {
+    margin: 16px 0;
+  }
+
+  .header-container .menu-container.active {
+    left: 0;
+  }
+
+  .header-container .hamburguer-menu {
+    display: block;
+  }
+
+  .header-container .hamburguer-menu.active .bar:nth-child(2) {
+    opacity: 0
+  }
+
+  .header-container .hamburguer-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .header-container .hamburguer-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .header-container .repo-link {
+    display: none
+  }
+}
