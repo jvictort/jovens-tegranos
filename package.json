@@ -11,8 +11,5 @@
     "email": "jvteodorobrasil@gmail.com",
     "url": "https://jvictort.github.io/"
   },
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.29.1"
-  }
+  "license": "ISC"
 }
