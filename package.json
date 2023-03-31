@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Exercícios de lógica de programaço do programa Jovens Tegranos",
   "main": "index.js",
-  "scripts": {
-    "start": "browser-sync start --server --file . --host --port 5000 --startPath index.html"
-  },
   "author": {
     "name": "João Victor Teodoro Brasil",
     "email": "jvteodorobrasil@gmail.com",
