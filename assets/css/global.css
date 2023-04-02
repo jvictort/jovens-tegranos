@@ -214,6 +214,10 @@
   font-weight: 300;
 }
 
+.form-container fieldset .short-form-field {
+  margin-top: 2.5em;
+}
+
 .form-container fieldset .form-fields .form-input {
   background: none;
   border: none;
