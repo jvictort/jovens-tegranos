@@ -73,9 +73,11 @@
   width: 100%;
 }
 
-.menu-container li nav {
+.menu-container li .nav-dropdown {
   display: flex;
-  justify-content: space-between;
+  /* border: 1px solid red; */
+  gap: 1em;
+  justify-content: space-around;
   visibility: hidden;
   width: 100%;
   position: fixed;
@@ -85,8 +87,8 @@
   background-color: var(--medium-black);
 }
 
-.menu-container li:hover nav,
-.menu-container li.over nav {
+.menu-container .list-dropdown:hover .nav-dropdown,
+.menu-container .list-dropdown.over .nav-dropdown {
   visibility: visible;
 }
 
@@ -194,6 +196,7 @@
   background: rgba(0, 0, 0, .7);
   border-radius: 1em;
   padding: 1em;
+  width: 45%;
 }
 
 .form-container fieldset {
@@ -227,6 +230,21 @@
   color: var(--white);
   letter-spacing: 0.5px;
   border-bottom: 1px solid var(--white);
+}
+
+.form-container fieldset .form-fields .select-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.form-container fieldset .form-fields .select-input .select-option {
+  color: var(--medium-black);
 }
 
 .form-container fieldset .form-fields .form-label {
@@ -276,8 +294,11 @@
   background-color: var(--darker-pink);
 }
 
+/*  RESPONSIVIDADE */
 
-@media(max-width: 880px) {
+
+/*  Dispositivos médios (tables) */
+@media (max-width: 1050px) {
   .header-container {
     padding: 0em 1em;
   }
@@ -324,5 +345,62 @@
 
   .header-container .repo-link {
     display: none
+  }
+
+  .nav-dropdown {
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .home-section {
+    padding: 2em 1em;
+  }
+
+  .home-text {
+    text-align: center;
+  }
+
+  .home-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .content-text {
+    max-width: 100%;
+  }
+
+  .form-container {
+    width: 70%;
+  }
+}
+
+/*  Dispositivos pequenos (smartphones) */
+
+@media (max-width: 650px) {
+
+  .nav-dropdown {
+    padding: 0.5em 0.5em;
+  }
+
+  .menu-dropdown {
+    border-left: 1px solid var(--white);
+  }
+
+  .dropdown-title {
+    font-size: 1.1em;
+  }
+
+  .menu-dropdown li a {
+    font-size: 0.8em;
+  }
+
+  .home-content {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .form-container {
+    width: 100%;
   }
 }
