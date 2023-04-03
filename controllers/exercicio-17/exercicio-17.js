@@ -8,8 +8,10 @@ form.addEventListener('submit', event => {
 
   const firstNumber  = parseInt(form['first-number'].value);
   const secondNumber  = parseInt(form['second-number'].value);
- 
-  let message = Number.isInteger((secondNumber / firstNumber)) ? 'Os números são múltiplos' : 'Os números não são múltiplos';
+
+  let message = Number.isInteger((secondNumber / firstNumber)) ?
+    `${secondNumber} é múltiplo de ${firstNumber}` :
+    `${secondNumber} não é múltiplo de ${firstNumber}`
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

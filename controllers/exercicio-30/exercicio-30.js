@@ -6,7 +6,12 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const unitsList = ['Um', 'Dois', 'Três', 'Quatro', 'Cinco', 'Seis', 'Sete', 'Oito', 'Nove'];
+  /*
+    - Tomei como padrão uma entrada de um número inteiro, já que o exercício não especificou
+    o número de casas decimais para caso o número fosse decimal.
+  */
+
+  const unitsList = ['Zero', 'Um', 'Dois', 'Três', 'Quatro', 'Cinco', 'Seis', 'Sete', 'Oito', 'Nove'];
   const teenNumbers = ['Onze', 'Doze', 'Treze', 'Quatorze', 'Quinze', 'Dezesseis', 'Dezessete', 'Dezoito', 'Dezenove'];
   const tensList = ['Dez', 'Vinte', 'Trinta', 'Quarenta', 'Cinquenta', 'Sessenta', 'Setenta', 'Oitenta', 'Noventa'];
 
@@ -20,7 +25,7 @@ form.addEventListener('submit', event => {
   }
 
   if(number <= 9) {
-    message += unitsList[number - 1];
+    message += unitsList[number];
 
   } else if(number == 10) {
     message += tensList[0];
@@ -31,9 +36,13 @@ form.addEventListener('submit', event => {
 
   } else if(number <= 99) {
     let stringNumber = number.toString();
-    
-    message += tensList[stringNumber[0] - 1] + ' e ';
-    message += unitsList[stringNumber[1] - 1];
+
+    if(stringNumber[1] == '0') {
+      message += tensList[stringNumber[0] - 1];
+    } else {
+      message += tensList[stringNumber[0] - 1] + ' e ';
+      message += unitsList[stringNumber[1]];
+    }
   }
 
   message = message.charAt(0) + message.slice(1).toLowerCase();

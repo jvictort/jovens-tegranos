@@ -10,7 +10,7 @@ form.addEventListener('submit', event => {
 
   let message = '';
 
-  if(glucoseMeasure < 100) {
+  if(glucoseMeasure <= 100) {
     message = 'O nível de glicose está normal';
   } else if(glucoseMeasure <= 140) {
     message = 'O nível de glicose está elevado';

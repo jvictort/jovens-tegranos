@@ -13,9 +13,13 @@ form.addEventListener('submit', event => {
   let totalPrice = productQuantify * unitPrice;
   let changePrice = (moneyAmount - totalPrice);
 
-  let message = changePrice < 0 ?
-      `Dinheiro insuficiente. Faltam ${(changePrice * -1).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}` :
-      `O troco será de ${changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  let message = '';
+
+  if(changePrice < 0) {
+    message = `Dinheiro insuficiente. Faltam ${(changePrice * -1).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  } else {
+    message = `O troco será de ${changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

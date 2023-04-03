@@ -10,11 +10,9 @@ form.addEventListener('submit', event => {
   const secondMeasure = parseFloat(form['second-measure'].value);
   const thirdMeasure = parseFloat(form['third-measure'].value);
 
-  let squareArea = (firstMeasure ** 2).toLocaleString('pt-br', {minimumFractionDigits: 4});
-  let triangleArea = ((firstMeasure * secondMeasure) / 2).toLocaleString('pt-br', {minimumFractionDigits: 4});
-  let trapezeArea = (((firstMeasure + secondMeasure) * thirdMeasure) / 2).toLocaleString('pt-br', {minimumFractionDigits: 4})
-
-  // let avarageCost = (distance / spentFuel).toLocaleString('pt-br', {minimumFractionDigits: 3});
+  let squareArea = (firstMeasure ** 2).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+  let triangleArea = ((firstMeasure * secondMeasure) / 2).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+  let trapezeArea = (((firstMeasure + secondMeasure) * thirdMeasure) / 2).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4})
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

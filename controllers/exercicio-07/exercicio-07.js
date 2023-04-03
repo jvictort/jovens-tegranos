@@ -9,7 +9,7 @@ form.addEventListener('submit', event => {
   const distance = parseFloat(form['distance'].value);
   const spentFuel = parseFloat(form['spent-fuel'].value);
 
-  let avarageCost = (distance / spentFuel).toLocaleString('pt-br', {minimumFractionDigits: 3});
+  let avarageCost = (distance / spentFuel).toLocaleString('pt-br', {minimumFractionDigits: 3, maximumFractionDigits: 3});
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

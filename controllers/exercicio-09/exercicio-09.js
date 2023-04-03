@@ -10,7 +10,7 @@ form.addEventListener('submit', event => {
 
   let hours = Math.floor(seconds / 3600);
   let minutes = Math.floor(((seconds / 3600) - hours) * 60);
-  seconds = Math.round(((((seconds / 3600) - hours) * 60) - minutes) * 60)
+  seconds = Math.round(((((seconds / 3600) - hours) * 60) - minutes) * 60);
 
   let time = `${hours}:${minutes}:${seconds}`;
 

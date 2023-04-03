@@ -21,6 +21,7 @@ form.addEventListener('submit', event => {
     }
 
     message = `A soma dos números ímpares entre ${initialNumber} e ${finalNumber} é de ${oddSum}`;
+    
   } else {
     message = `O número inicial é maior do que o número final. Inverta sua ordem ou tente outros números.`;
   }
@@ -30,5 +31,5 @@ form.addEventListener('submit', event => {
   contentResult.innerHTML = `
     <p>${message}</p>
   `
-  
+
 })

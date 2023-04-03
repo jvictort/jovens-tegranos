@@ -6,6 +6,8 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
+  // Assim como no exercício 10, utilizei um array para facilitar manutenções futuras e aumentar a performance
+
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
@@ -17,7 +19,7 @@ form.addEventListener('submit', event => {
 
   // Função que ordena os números de forma crescente
   numbers.sort((a, b) => a > b);
-  
+
   sortedNumbers = numbers.toString().replaceAll(',', ', ');
 
   contentTitle.textContent = 'Resultado';

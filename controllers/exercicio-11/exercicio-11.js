@@ -9,11 +9,15 @@ form.addEventListener('submit', event => {
   const firstGrade = parseFloat(form['first-grade'].value);
   const secondGrade = parseFloat(form['second-grade'].value);
 
-  let finalGrade = (firstGrade + secondGrade)
+  let finalGrade = (firstGrade + secondGrade);
 
-  let message = finalGrade < 60.0 ? 
-                `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1})} e foi reprovado` 
-              : `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1})} e foi aprovado}`;
+  let message = '';
+
+  if(finalGrade < 60.0) {
+    message = `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1})} e foi reprovado`
+  } else {
+    message = `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1})} e foi aprovado`
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

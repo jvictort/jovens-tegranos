@@ -21,9 +21,7 @@ form.addEventListener('submit', event => {
     - Acima de R$ 8000.00 -> 05%
 
     No entanto não é dito o que fazer no caso de R$ 999.01 ... R$ 999.99. Portanto, tomei como
-    iniciativa estender a taxa de 20% até R$ 999.99.
-
-    O mesmo ocorre para os outros casos.
+    iniciativa estender a taxa de 20% até R$ 999.99. O mesmo ocorre para os outros casos.
   */
 
   if(salary <= 999.99) {
@@ -47,10 +45,14 @@ form.addEventListener('submit', event => {
     newSalary = salary + salaryIncrease;
   }
 
+  newSalary =  newSalary.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+  salaryIncrease = salaryIncrease.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+  increaseRate = increaseRate.toLocaleString('pt-br', {style: 'percent'});
+
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>Novo salário: ${newSalary.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</p>
-    <p>Aumento: ${salaryIncrease.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</p>
-    <p>Porcentagem de aumento: ${increaseRate.toLocaleString('pt-br', {style: 'percent'})}</p>
+    <p>Novo salário: ${newSalary}</p>
+    <p>Aumento: ${salaryIncrease}</p>
+    <p>Porcentagem de aumento: ${increaseRate}</p>
   `
 })

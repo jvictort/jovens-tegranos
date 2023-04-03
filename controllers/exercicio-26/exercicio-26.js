@@ -13,7 +13,7 @@ form.addEventListener('submit', event => {
   let vowelNumber = 0;
   let consonantNumber = 0;
 
-  letters = word.split('');
+  letters = word.toLowerCase().split('');
 
   letters.forEach(letter => {
     if(vowelsList.includes(letter)) {

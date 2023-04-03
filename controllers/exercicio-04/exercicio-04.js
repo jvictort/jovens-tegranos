@@ -13,11 +13,16 @@ form.addEventListener('submit', event => {
   let totalPrice = productQuantify * unitPrice;
   let changePrice = (moneyAmount - totalPrice);
 
-  let finalMessage = changePrice < 0 ? 'O preço final da compra é maior do que o dinheiro recebido' :
-                                  `O troco será de ${changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  let message = '';
+
+  if(changePrice < 0) {
+    message = 'O preço final da compra é maior do que o dinheiro recebido';
+  } else {
+    message = `O troco será de ${changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>${finalMessage}</p>
+    <p>${message}</p>
   `
 })

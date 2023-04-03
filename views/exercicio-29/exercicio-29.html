@@ -23,7 +23,7 @@
         <ul class="menu-container">
           <li><a href="../../index.html" class="border-effect">Home <i class="fa-solid fa-house"></i></a></li>
 
-          <li class="list-dropdown"> 
+          <li class="list-dropdown">
             <a href="#" class="border-effect">Exercícios <i class="fa-solid fa-dumbbell"></i></a>
 
             <nav class="nav-dropdown">
@@ -88,7 +88,7 @@
       <section class="home-section">
         <div class="home-text">
           <h1>Exercício <span>29</span></h1>
-          <p>Digite um número de CNPJ e verifique sua validade</p>
+          <p>Digite um número de CNPJ e verifique sua validade.</p>
         </div>
 
 
@@ -97,8 +97,15 @@
             <fieldset>
               <legend>Exercício 29</legend>
 
+
               <div class="form-fields">
-                <input type="text" name="cnpj-number" required class="form-input">
+
+                <!--  Input com máscara para CNPJ -->
+                <input type="text" name="cnpj-number" required
+                       pattern="(\([0-9]{2}\)).(\([0-9]{3}\)).(\([0-9]{3}\))/(\([0-9]{4}\)-(\([0-9]{2}\))"
+                       placeholder="99.999.999/9999-99"
+                       class="form-input">
+
                 <label for="cnpj-number" class="form-label validated-label">CNPJ</label>
               </div>
 
@@ -109,7 +116,7 @@
           <div class="content-text">
             <!--  Elementos controlados via Javascript -->
 
-            <h2 id="content-title">Não há resultados a serem mostrados..</h2>
+            <h2 id="content-title">Não há resultados a serem mostrados...</h2>
             <div id="content-result"></div>
           </div>
         </div>

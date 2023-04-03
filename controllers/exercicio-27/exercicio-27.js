@@ -17,7 +17,7 @@ form.addEventListener('submit', event => {
 
   reversedWord = wordList.toString().replaceAll(',', '');
 
-  message = reversedWord == plainWord ? `A palavra ${word} é palíndroma` : `A palavra ${word} não é palíndroma`;
+  message = reversedWord == plainWord ? `A palavra/frase ${word} é palíndroma` : `A palavra ${word} não é palíndroma`;
 
   contentTitle.textContent = 'Resultado';
 

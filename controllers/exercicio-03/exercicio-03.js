@@ -12,10 +12,10 @@ form.addEventListener('submit', event => {
   const firstAge = parseInt(form['first-age'].value);
   const secondAge = parseInt(form['second-age'].value);
 
-  let avarageAge = ((firstAge + secondAge) / 2).toLocaleString('pt-br', {minimumFractionDigits: 1});
+  let avarageAge = ((firstAge + secondAge) / 2).toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1});
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>A idade média de ${firstName} e ${secondName} é de ${avarageAge} anos</p>
+    <p>A média das idades de ${firstName} e ${secondName} é de ${avarageAge} anos</p>
   `
 })

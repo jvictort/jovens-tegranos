@@ -15,7 +15,7 @@ form.addEventListener('submit', event => {
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>Área do terreno: ${landArea.toLocaleString('pt-br', {minimumFractionDigits: 2})}m²</p>
+    <p>Área do terreno: ${landArea.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})}m²</p>
     <p>Preço do terreno: ${landPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
   `
 })

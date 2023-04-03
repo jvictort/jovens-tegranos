@@ -9,9 +9,9 @@ form.addEventListener('submit', event => {
   const rectangleBase = parseFloat(form['rectangle-base'].value);
   const rectangleHeight = parseFloat(form['rectangle-height'].value);
 
-  let rectangleArea = (rectangleBase * rectangleHeight).toLocaleString('pt-br', {minimumFractionDigits: 4});
-  let rectanglePerimeter = ((rectangleBase + rectangleHeight) * 2).toLocaleString('pt-br', {minimumFractionDigits: 4});
-  let rectangleDiagonal = (Math.sqrt((rectangleBase ** 2) + (rectangleHeight ** 2))).toLocaleString('pt-br', {minimumFractionDigits: 4});
+  let rectangleArea = (rectangleBase * rectangleHeight).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+  let rectanglePerimeter = ((rectangleBase + rectangleHeight) * 2).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+  let rectangleDiagonal = (Math.sqrt((rectangleBase ** 2) + (rectangleHeight ** 2))).toLocaleString('pt-br', {minimumFractionDigits: 4, maximumFractionDigits: 4});
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

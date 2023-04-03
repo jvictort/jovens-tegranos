@@ -6,6 +6,8 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
+  // Assim como no exercício 10, utilizei um array para facilitar manutenções futuras e aumentar a performance
+
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
