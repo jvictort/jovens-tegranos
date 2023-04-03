@@ -300,6 +300,9 @@
 /*  Dispositivos médios (tables) */
 @media (max-width: 1050px) {
   .header-container {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
     padding: 0em 1em;
   }
 
