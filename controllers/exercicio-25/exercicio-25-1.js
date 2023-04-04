@@ -7,7 +7,8 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   /*
-      Neste exercício decidi utilizar uma estrutura de dados para diminuir a quantidade de if's utilizados.
+       Na primeira maneira que encontrei de fazer esse exercício decidi utilizar uma estrutura de dados para diminuir
+      a quantidade de if's utilizados.
 
       - A estrutura de dados possui os campos initialDate e finalDate, ambos arrays que contêm, respectivamente, dia e mês.
 
