@@ -6,17 +6,22 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const firstGrade = parseFloat(form['first-grade'].value);
-  const secondGrade = parseFloat(form['second-grade'].value);
-
-  let finalGrade = (firstGrade + secondGrade);
+  const firstGrade = parseFloat(Number(form['first-grade'].value));
+  const secondGrade = parseFloat(Number(form['second-grade'].value));
 
   let message = '';
 
-  if(finalGrade < 60.0) {
-    message = `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1})} e foi reprovado`
+  if(validNumericInputs([firstGrade, secondGrade], false)) {
+    let finalGrade = (firstGrade + secondGrade);
+    finalGrade = finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+
+    if(finalGrade < 60.0) {
+      message = `O aluno obteve a nota final de ${finalGrade} e foi reprovado.`;
+    } else {
+      message = `O aluno obteve a nota final de ${finalGrade} e foi aprovado.`;
+    }
   } else {
-    message = `O aluno obteve a nota final de ${finalGrade.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1})} e foi aprovado`
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
   }
 
   contentTitle.textContent = 'Resultado';

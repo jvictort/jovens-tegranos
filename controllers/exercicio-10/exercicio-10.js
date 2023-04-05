@@ -16,17 +16,23 @@ form.addEventListener('submit', event => {
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
+  let message = '';
 
   inputNumbers.forEach(input => {
-    numbers.push(parseInt(input.value));
+    numbers.push(parseInt(Number(input.value)));
   });
 
-  /*
-    - A solução convencional seria com if's encadeados. Preferi, contudo, utilizar a função Math.min()
-    pois ela permite um código limpo, de fácil manutenção e de fácil compreensão.
-  */
+  if(validNumericInputs(numbers, true)) {
+    /*
+      - A solução convencional seria com if's encadeados. Preferi, contudo, utilizar a função Math.min()
+      pois ela permite um código limpo, de fácil manutenção e de fácil compreensão.
+    */
 
-  let message = `O menor número é ${Math.min(...numbers)}`;
+    message = `O menor número é ${Math.min(...numbers)}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números.';
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

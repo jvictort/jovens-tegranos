@@ -11,19 +11,28 @@ form.addEventListener('submit', event => {
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
-  let sortedNumbers = '';
+  let message = '';
 
   inputNumbers.forEach(inputNumber => {
-    numbers.push(parseFloat(inputNumber.value));
-  })
+    numbers.push(parseFloat(Number(inputNumber.value)));
+  });
 
-  let maxNumber = Math.max(...numbers).toLocaleString('pt-br');
-  let minNumber = Math.min(...numbers).toLocaleString('pt-br');
+  if(validNumericInputs(numbers, true)) {
+    let sortedNumbers = '';
+
+    let maxNumber = Math.max(...numbers).toLocaleString('pt-br');
+    let minNumber = Math.min(...numbers).toLocaleString('pt-br');
+
+    message = `O maior número é ${maxNumber} e o menor número é ${minNumber}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números.';
+  }
 
   contentTitle.textContent = 'Resultado';
 
   contentResult.innerHTML = `
-    <p>O maior número é ${maxNumber} e o menor número é ${minNumber}</p>
+    <p>${message}</p>
   `
 
 })

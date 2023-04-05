@@ -14,15 +14,24 @@ form.addEventListener('submit', event => {
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
+  let message = '';
 
   inputNumbers.forEach(input => {
-    numbers.push(parseFloat(input.value));
+    numbers.push(parseFloat(Number(input.value)));
   });
 
-  let higherTry = Math.max(...numbers).toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  if(validNumericInputs(numbers, false)) {
+    let higherTry = Math.max(...numbers);
+    higherTry = higherTry.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    message = `A maior distância foi de ${higherTry}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>A maior distância foi de ${higherTry}</p>
+    <p>${message}</p>
   `
 })

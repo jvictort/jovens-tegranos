@@ -8,30 +8,33 @@ const temperatureUnit = document.querySelector('#temperature-unit');
 temperatureUnit.addEventListener('change', event => {
     const temperatureLabel = document.querySelector('#temperature-label');
     temperatureLabel.textContent = `°${event.target.value}`;
-})
+});
 
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const temperatureMeasure  = parseFloat(form['temperature-measure'].value);
+  const temperatureMeasure  = parseFloat(Number(form['temperature-measure'].value));
 
   let message = '';
-  let convertedTemperature = '';
 
+  if(validNumericInputs([temperatureMeasure], true)) {
+    let convertedTemperature = '';
 
-  if(temperatureUnit.value == 'C') {
-    convertedTemperature = ((temperatureMeasure * 1.8) + 32).toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    message = `A temperatura equivalente em Fahrenheit é de °F ${convertedTemperature}`;
+    if(temperatureUnit.value == 'C') {
+      convertedTemperature = ((temperatureMeasure * 1.8) + 32);
+      convertedTemperature = convertedTemperature.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      message = `A temperatura equivalente em Fahrenheit é de ${convertedTemperature} °F.`;
+    } else {
+      convertedTemperature = ((temperatureMeasure - 32) / 1.8);
+      convertedTemperature = convertedTemperature.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      message = `A temperatura equivalente em Celsius é de ${convertedTemperature} °C.`;
+    }
 
   } else {
-    convertedTemperature = ((temperatureMeasure - 32) / 1.8).toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})
-    message = `A temperatura equivalente em Celsius é de °C ${convertedTemperature}`;
-
+    message = 'Ocorreu um erro. Os campos aceitam apenas números.';
   }
-
-  // let message = temperatureUnit.value == 'C' ?
-  //               `A temperatura equivalente em Fahrenheit é de °F ${((temperatureMeasure * 1.8) + 32).toLocaleString('pt-br', {maximumFractionDigits: 2})}`
-  //             : `A temperatura equivalente em Celsius é de °C ${((temperatureMeasure - 32) / 1.8).toLocaleString('pt-br', {maximumFractionDigits: 2})}`;
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `

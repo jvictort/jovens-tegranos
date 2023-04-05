@@ -6,20 +6,29 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const minutes  = parseInt(form['minutes'].value);
+  const minutes  = parseInt(Number(form['minutes'].value));
 
-  let chargeAmount = 50;
+  let message = '';
 
-  if(minutes > 100) {
-    let addedMinutes = minutes - 100;
+  if(validNumericInputs([minutes], false)) {
+    let chargeAmount = 50;
 
-    chargeAmount += addedMinutes * 2;
+    if(minutes > 100) {
+      let addedMinutes = minutes - 100;
+
+      chargeAmount += addedMinutes * 2;
+    }
+
+    chargeAmount = chargeAmount.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+    message = `A quantidade a ser paga é de ${chargeAmount}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
   }
-
-  chargeAmount = chargeAmount.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>A quantidade a ser paga é de ${chargeAmount}</p>
+    <p>${message}</p>
   `
 })

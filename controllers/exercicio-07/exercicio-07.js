@@ -6,13 +6,23 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const distance = parseFloat(form['distance'].value);
-  const spentFuel = parseFloat(form['spent-fuel'].value);
+  const distance = parseFloat(Number(form['distance'].value));
+  const spentFuel = parseFloat(Number(form['spent-fuel'].value));
 
-  let avarageCost = (distance / spentFuel).toLocaleString('pt-br', {minimumFractionDigits: 3, maximumFractionDigits: 3});
+  let message = '';
+
+  if(validNumericInputs([distance, spentFuel], false)) {
+    let avarageCost = (distance / spentFuel);
+    avarageCost = avarageCost.toLocaleString('pt-br', {minimumFractionDigits: 3, maximumFractionDigits: 3});
+
+    message = `O consumo médio foi de ${avarageCost}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>O consumo médio foi de ${avarageCost}</p>
+    <p>${message}</p>
   `
 })

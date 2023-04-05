@@ -15,15 +15,24 @@ form.addEventListener('submit', event => {
 
   */
 
-  const dayNumber = form['day-number'].value;
-  const monthNumber = form['month-number'].value;
+  const dayNumber = parseInt(Number(form['day-number'].value));
+  const monthNumber = parseInt(Number(form['month-number'].value));
 
-  let userSign = getSign(dayNumber, monthNumber);
+  let message = '';
+
+  if(dayNumber >= 1 && dayNumber <= 31 && monthNumber >= 1 && monthNumber <= 12) {
+    let userSign = getSign(dayNumber, monthNumber);
+
+    message = `Seu signo é ${userSign}`;
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam dias de 1 a 31 e meses de 1 a 12.';
+  }
+
 
   contentTitle.textContent = 'Resultado';
 
   contentResult.innerHTML = `
-    <p>Seu signo é ${userSign}</p>
+    <p>${message}</p>
   `
 
 })

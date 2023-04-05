@@ -7,13 +7,23 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   const workerName = form['worker-name'].value;
-  const hourValue = parseFloat(form['hour-value'].value);
-  const workedHours = parseInt(form['worked-hours'].value);
+  const hourValue = parseFloat(Number(form['hour-value'].value));
+  const workedHours = parseInt(Number(form['worked-hours'].value));
 
-  let total = (hourValue * workedHours).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+  let message = '';
+
+  if(validNumericInputs([hourValue, workedHours], false)) {
+    let total = (hourValue * workedHours);
+    total = total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+    message = `O pagamento para ${workerName} será de ${total}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>O pagamento para ${workerName} será de ${total}</p>
+    <p>${message}</p>
   `
 })

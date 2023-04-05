@@ -11,21 +11,30 @@ form.addEventListener('submit', event => {
   const inputNumbers = document.querySelectorAll('input');
 
   let numbers = [];
-  let sortedNumbers = '';
+  let message = '';
 
   inputNumbers.forEach(inputNumber => {
-    numbers.push(parseInt(inputNumber.value));
-  })
+    numbers.push(parseInt(Number(inputNumber.value)));
+  });
 
-  // Função que ordena os números de forma crescente
-  numbers.sort((a, b) => a > b);
+  if(validNumericInputs(numbers, true)) {
+    let sortedNumbers = '';
 
-  sortedNumbers = numbers.toString().replaceAll(',', ', ');
+    // Função que ordena os números de forma crescente
+    numbers.sort((a, b) => a > b);
+
+    sortedNumbers = numbers.toString().replaceAll(',', ', ');
+
+    message = `A ordem crescente será: ${sortedNumbers}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números.';
+  }
 
   contentTitle.textContent = 'Resultado';
 
   contentResult.innerHTML = `
-    <p>A ordem crescente será: ${sortedNumbers}</p>
+    <p>${message}</p>
   `
 
 })

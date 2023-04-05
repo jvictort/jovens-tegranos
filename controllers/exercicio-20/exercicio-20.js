@@ -6,17 +6,26 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const initialNumber  = parseInt(form['initial-number'].value);
-  const finalNumber  = parseInt(form['final-number'].value);
+  const initialNumber  = parseInt(Number(form['initial-number'].value));
+  const finalNumber  = parseInt(Number(form['final-number'].value));
 
-  let sumNumbers = 0;
+  let message = '';
 
-  for(let i = initialNumber; i <= finalNumber; i++) {
-    sumNumbers += i;
+  if(validNumericInputs([initialNumber, finalNumber], true)) {
+    let sumNumbers = 0;
+
+    for(let i = initialNumber; i <= finalNumber; i++) {
+      sumNumbers += i;
+    }
+
+    message = `A somatória entre ${initialNumber} e ${finalNumber} é de ${sumNumbers}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números.';
   }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>A somatória entre ${initialNumber} e ${finalNumber} é de ${sumNumbers}</p>
+    <p>${message}</p>
   `
 })

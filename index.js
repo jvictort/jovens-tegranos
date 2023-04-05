@@ -33,3 +33,21 @@ menuLinks.forEach(links => {
     menuContainer.classList.remove('active');
   });
 });
+
+const validNumericInputs = (numericInputs, isNegative) => {
+  let isValid = true;
+
+  numericInputs.forEach(input => {
+    if(isNegative) {
+      if(isNaN(input)) {
+        isValid = false;
+      }
+    } else {
+      if(isNaN(input) || input < 0) {
+        isValid = false;
+      }
+    }
+  });
+
+  return isValid;
+}

@@ -6,19 +6,28 @@ const contentResult = document.querySelector('#content-result');
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const unitPrice = parseFloat(form['unit-price'].value);
-  const productQuantify = parseInt(form['product-quantify'].value);
-  const moneyAmount = parseFloat(form['money-amount'].value);
-
-  let totalPrice = productQuantify * unitPrice;
-  let changePrice = (moneyAmount - totalPrice);
+  const unitPrice = parseFloat(Number(form['unit-price'].value));
+  const productQuantify = parseInt(Number(form['product-quantify'].value));
+  const moneyAmount = parseFloat(Number(form['money-amount'].value));
 
   let message = '';
 
-  if(changePrice < 0) {
-    message = `Dinheiro insuficiente. Faltam ${(changePrice * -1).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+  if(validNumericInputs([unitPrice, productQuantify, moneyAmount], false)) {
+    let totalPrice = productQuantify * unitPrice;
+    let changePrice = (moneyAmount - totalPrice);
+
+    if(changePrice < 0) {
+      changePrice = (changePrice * -1).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+      message = `Dinheiro insuficiente. Faltam ${changePrice}.`;
+    } else {
+      changePrice = changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+      message = `O troco será de ${changePrice}.`;
+    }
+
   } else {
-    message = `O troco será de ${changePrice.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`;
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
   }
 
   contentTitle.textContent = 'Resultado';

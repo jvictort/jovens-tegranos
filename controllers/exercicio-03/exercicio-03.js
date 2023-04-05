@@ -9,13 +9,23 @@ form.addEventListener('submit', event => {
   const firstName = form['first-name'].value;
   const secondName = form['second-name'].value;
 
-  const firstAge = parseInt(form['first-age'].value);
-  const secondAge = parseInt(form['second-age'].value);
+  const firstAge = parseInt(Number(form['first-age'].value));
+  const secondAge = parseInt(Number(form['second-age'].value));
 
-  let avarageAge = ((firstAge + secondAge) / 2).toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+  let message = '';
+
+  if(validNumericInputs([firstAge, secondAge], false)) {
+    let avarageAge = ((firstAge + secondAge) / 2);
+    avarageAge = avarageAge.toLocaleString('pt-br', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+
+    message = `A média das idades de ${firstName} e ${secondName} é de ${avarageAge} anos.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam apenas números a partir de 0.';
+  }
 
   contentTitle.textContent = 'Resultado';
   contentResult.innerHTML = `
-    <p>A média das idades de ${firstName} e ${secondName} é de ${avarageAge} anos</p>
+    <p>${message}</p>
   `
 })

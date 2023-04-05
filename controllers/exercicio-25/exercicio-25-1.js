@@ -32,25 +32,34 @@ form.addEventListener('submit', event => {
     'Peixes': { initialDate: [19, 2], finalDate: [20, 3] }
   }
 
-  const dayNumber = parseInt(form['day-number'].value);
-  const monthNumber = parseInt(form['month-number'].value);
+  const dayNumber = parseInt(Number(form['day-number'].value));
+  const monthNumber = parseInt(Number(form['month-number'].value));
 
-  let userSign = '';
+  let message = '';
 
-  for(let sign in signsObject) {
-    let initialDate = signsObject[sign].initialDate;
-    let finalDate = signsObject[sign].finalDate;
+  if(dayNumber >= 1 && dayNumber <= 31 && monthNumber >= 1 && monthNumber <= 12) {
+    let userSign = '';
 
-    if(dayNumber >= initialDate[0] && monthNumber == initialDate[1] || dayNumber <= finalDate[0] && monthNumber == finalDate[1]) {
-      userSign = sign;
+    for(let sign in signsObject) {
+      let initialDate = signsObject[sign].initialDate;
+      let finalDate = signsObject[sign].finalDate;
+
+      if(dayNumber >= initialDate[0] && monthNumber == initialDate[1] || dayNumber <= finalDate[0] && monthNumber == finalDate[1]) {
+        userSign = sign;
+      }
     }
+
+    message = `Seu signo é ${userSign}.`;
+
+  } else {
+    message = 'Ocorreu um erro. Os campos aceitam dias de 1 a 31 e meses de 1 a 12.';
   }
 
 
   contentTitle.textContent = 'Resultado';
 
   contentResult.innerHTML = `
-    <p>Seu signo é ${userSign}</p>
+    <p>${message}</p>
   `
 
 })
